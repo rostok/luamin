@@ -389,7 +389,7 @@
 			}
 			result += ')';
 			result = joinStatements(result, formatStatementList(expression.body));
-			result = joinStatements(result, 'end');
+			result = joinStatements(result, 'end\n');
 
 		} else if (expressionType == 'TableConstructorExpression') {
 
@@ -426,7 +426,7 @@
 	var formatStatementList = function(body) {
 		var result = '';
 		each(body, function(statement) {
-			result = joinStatements(result, formatStatement(statement), ';');
+			result = joinStatements(result, formatStatement(statement), '\n');
 		});
 		return result;
 	};
@@ -503,19 +503,19 @@
 				}
 				result = joinStatements(result, formatStatementList(clause.body));
 			});
-			result = joinStatements(result, 'end');
+			result = joinStatements(result, 'end\n');
 
 		} else if (statementType == 'WhileStatement') {
 
 			result = joinStatements('while', formatExpression(statement.condition));
 			result = joinStatements(result, 'do');
 			result = joinStatements(result, formatStatementList(statement.body));
-			result = joinStatements(result, 'end');
+			result = joinStatements(result, 'end\n');
 
 		} else if (statementType == 'DoStatement') {
 
 			result = joinStatements('do', formatStatementList(statement.body));
-			result = joinStatements(result, 'end');
+			result = joinStatements(result, 'end\n');
 
 		} else if (statementType == 'ReturnStatement') {
 
@@ -558,7 +558,7 @@
 
 			result += ')';
 			result = joinStatements(result, formatStatementList(statement.body));
-			result = joinStatements(result, 'end');
+			result = joinStatements(result, 'end\n');
 
 		} else if (statementType == 'ForGenericStatement') {
 			// see also `ForNumericStatement`
@@ -584,7 +584,7 @@
 
 			result = joinStatements(result, 'do');
 			result = joinStatements(result, formatStatementList(statement.body));
-			result = joinStatements(result, 'end');
+			result = joinStatements(result, 'end\n');
 
 		} else if (statementType == 'ForNumericStatement') {
 
@@ -599,7 +599,7 @@
 
 			result = joinStatements(result, 'do');
 			result = joinStatements(result, formatStatementList(statement.body));
-			result = joinStatements(result, 'end');
+			result = joinStatements(result, 'end\n');
 
 		} else if (statementType == 'LabelStatement') {
 
