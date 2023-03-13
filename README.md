@@ -1,3 +1,7 @@
+# CHANGES
+
+my version 1.0.4a exposes generateIdentifier so if one needs to keep all the identifiers intact they can replace it with `(i)=>i`
+
 # luamin, a Lua minifier written in JavaScript
 
 [![Build status](https://travis-ci.org/mathiasbynens/luamin.svg?branch=master)](https://travis-ci.org/mathiasbynens/luamin)

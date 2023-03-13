@@ -650,7 +650,8 @@
 	/*--------------------------------------------------------------------------*/
 
 	var luamin = {
-		'version': '1.0.4',
+		'version': '1.0.4a',
+		'generateIdentifier' : generateIdentifier,
 		'minify': minify
 	};
 
