@@ -145,7 +145,7 @@
 					isKeyword(currentIdentifier) ||
 					indexOf(identifiersInUse, currentIdentifier) > -1
 				) {
-					return generateIdentifier(originalName);
+					return luamin.generateIdentifier(originalName);
 				}
 				identifierMap[originalName] = currentIdentifier;
 				return currentIdentifier;
@@ -154,7 +154,7 @@
 		}
 		currentIdentifier = 'a' + generateZeroes(length);
 		if (indexOf(identifiersInUse, currentIdentifier) > -1) {
-			return generateIdentifier(originalName);
+			return luamin.generateIdentifier(originalName);
 		}
 		identifierMap[originalName] = currentIdentifier;
 		return currentIdentifier;
@@ -247,7 +247,7 @@
 		if (expressionType == 'Identifier') {
 
 			result = expression.isLocal && !options.preserveIdentifiers
-				? generateIdentifier(expression.name)
+				? luamin.generateIdentifier(expression.name)
 				: expression.name;
 
 		} else if (
@@ -380,7 +380,7 @@
 				each(expression.parameters, function(parameter, needsComma) {
 					// `Identifier`s have a `name`, `VarargLiteral`s have a `value`
 					result += parameter.name
-						? generateIdentifier(parameter.name)
+						? luamin.generateIdentifier(parameter.name)
 						: parameter.value;
 					if (needsComma) {
 						result += ',';
@@ -461,7 +461,7 @@
 			// left-hand side
 			each(statement.variables, function(variable, needsComma) {
 				// Variables in a `LocalStatement` are always local, duh
-				result += generateIdentifier(variable.name);
+				result += luamin.generateIdentifier(variable.name);
 				if (needsComma) {
 					result += ',';
 				}
@@ -548,7 +548,7 @@
 				each(statement.parameters, function(parameter, needsComma) {
 					// `Identifier`s have a `name`, `VarargLiteral`s have a `value`
 					result += parameter.name
-						? generateIdentifier(parameter.name)
+						? luamin.generateIdentifier(parameter.name)
 						: parameter.value;
 					if (needsComma) {
 						result += ',';
@@ -567,7 +567,7 @@
 
 			each(statement.variables, function(variable, needsComma) {
 				// The variables in a `ForGenericStatement` are always local
-				result += generateIdentifier(variable.name);
+				result += luamin.generateIdentifier(variable.name);
 				if (needsComma) {
 					result += ',';
 				}
@@ -589,7 +589,7 @@
 		} else if (statementType == 'ForNumericStatement') {
 
 			// The variables in a `ForNumericStatement` are always local
-			result = 'for ' + generateIdentifier(statement.variable.name) + '=';
+			result = 'for ' + luamin.generateIdentifier(statement.variable.name) + '=';
 			result += formatExpression(statement.start) + ',' +
 				formatExpression(statement.end);
 
@@ -604,12 +604,12 @@
 		} else if (statementType == 'LabelStatement') {
 
 			// The identifier names in a `LabelStatement` can safely be renamed
-			result = '::' + generateIdentifier(statement.label.name) + '::';
+			result = '::' + luamin.generateIdentifier(statement.label.name) + '::';
 
 		} else if (statementType == 'GotoStatement') {
 
 			// The identifier names in a `GotoStatement` can safely be renamed
-			result = 'goto ' + generateIdentifier(statement.label.name);
+			result = 'goto ' + luamin.generateIdentifier(statement.label.name);
 
 		} else {
 
